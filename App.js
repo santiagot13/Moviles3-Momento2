@@ -1,40 +1,11 @@
-// import React from 'react';
-// import { StyleSheet, Text, View } from 'react-native';
-
-// export default function App() {
-//   return (
-//     <View style={styles.container}>
-//       <Text>Open up App.js to start working on your app!</Text>
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
-// import React from 'react';
-// import AppNavigation from '@navigation/AppNavigation';
-// //import {NavigationContainer} from '@react-navigation/native';
-
-// function App() {
-//   return <AppNavigation />;
-// }
-
-// export default App;
 import React, {Component} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-//import DetailList from '/screens/detailScreen/containers/detail-list.js';
-import DateScreen from '/screens/date/date.js';
-import HistoryScreen from '/screens/history/history.js';
-import TeamScreen from '/screens/team/team.js';
-import Colors from '/styles/Colors.js';
+import DateScreen from './././screens/date/date.js';
+import HistoryScreen from './screens/history/history.js';
+import TeamScreen from './screens/team/team.js';
+import Colors from './styles/Colors.js';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -87,7 +58,7 @@ export default class App extends Component {
             name="TeamScreen"
             component={TeamScreen}
             options={{
-              tabBarLabel: 'Teams',
+              tabBarLabel: 'Team',
               tabBarColor: Colors.DarkBlue,
               tabBarIcon: () => (
                 <Icon name="account-group" color={Colors.DarkBlue} size={25} />

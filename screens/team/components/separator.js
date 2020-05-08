@@ -11,9 +11,9 @@ export default class Separator extends React.Component {
 
 const styles = StyleSheet.create({
     separator: {
-        width: '100%',
+        width: '70%',
         height: '0.5%',
         borderTopWidth: 2,
-        borderColor: 'tomato',
+        borderColor: 'purple',
     },
 });

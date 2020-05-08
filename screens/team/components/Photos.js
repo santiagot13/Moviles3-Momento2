@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
         width: 160,
         height: 160,
         borderRadius: 100,
-        borderColor: '#1C50C9',
+        borderColor: 'tomato',
         borderWidth: 5,
         borderStyle: 'dotted',
     },

@@ -25,7 +25,7 @@ export default class TeamScreen extends React.Component{
       width: '100%',
       height: '100%',
       flexDirection: 'column',
-      backgroundColor: '#d4cfcc',
+      backgroundColor: '#EEFBFE',
       alignItems: 'center',
       justifyContent: 'center',
     },

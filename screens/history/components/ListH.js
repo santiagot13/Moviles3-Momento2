@@ -1,55 +1,35 @@
-import React, {Component} from 'react';
-import {StyleSheet, FlatList } from 'react-native';
-import {ListItem, List} from 'react-native-elements'
+import React, {useEffect, useState} from 'react';
+import {StyleSheet, View, FlatList, tasks, TouchableHighlight} from 'react-native';
+import CardComponent from './card';
+import { useIsFocused } from '@react-navigation/native';
 
-export default class ListH extends React.Component{
-  //sobre escribimos el constructor
-  constructor(props){
-    super(props);
+export default function ListH(props){
+  const isFocused = useIsFocused();
+  const [tasks, setTasks] = useState([]);
 
-    this.state = {
-      loading: false,
-      data: [],
-    }
+  const fetchTasks = async () =>{
+    //let response = await fetch('http://192.168.1.4/taskapp_api_php/api/listtasks');
+    let response = await fetch(';http://192.168.1.4:3000/api/listtask');
+    let jsonResponse = await response.json();
+    setTasks(jsonResponse.tasks);
   }
+  useEffect(()=>{
+    fetchTasks();
+  },[isFocused]);
 
-  //Función que se ejecutra cuando los componentes han sido cargados en la app
-  componentDidMount(){
-    this.getUserRandom();
-  }
-
-  //Función encargada de hacer la petición al servidor y obtener los datos
-  getUserRandom = () =>{
-    //Se coloca aquí la url para poder hacer refresh a la lista
-    const url = 'https://randomuser.me/api/?seed=1&page=1&result=20';
-    //la add identifica que el proceso de descarfga inicia
-    this.setState({loading: true})
-    
-    //"fetch" permite realizar la petición al servidor y obtine los datos
-    fetch (url)
-    //el resultado se coloca como objeto json
-    .then (res => res.json())
-    
-    .then (res => {
-      this.setState({
-        data: res.results,//"results" es el nombre de la lista de la API
-        //identifica que la descarga ha finalizado
-        loadind: false,
-      })
-    });
-  };
-
-  render (){
-    return(
-      <List>
-        {/* El FlatList se comporta como un foreach */}
-        <FlatList data={this.state.data} renderItem ={ ({item}) => (
-          //representación de cada elemento de la lista
-          <ListItem  roundAvatar title={this.name.first} subtitile={item.email} avatar={ {uri:item.picture.thumbnail} }/>
-        )}/>
-      </List>
-    )
-  }   
+  return (
+    <View style={styles.container}>
+      <TouchableHighlight style={styles.createTaskButton} onPress={() => navigation.navigate('Create')}>
+        <Text style={styles.buttonTextStyle}>Create Task</Text>
+        </TouchableHighlight>
+          <FlatList
+            data={tasks}
+            renderItem={({ item }) => <CardComponent task={item}/>}
+            keyExtractor={item => item._id} aca la identificación como esta en la base de datos
+            keyExtractor={item => item.name}
+          />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -61,4 +41,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
    },
+   createTaskButton: {
+        backgroundColor: 'purple',
+        padding: 20,
+        alignItems: 'center',
+    },
+    buttonTextStyle: {
+        color: 'white',
+    },
+    item: {
+        backgroundColor:'#f9c2ff',
+        padding: 20,
+        marginVertical: 8,
+        marginHorizontal: 16,
+    },
 });

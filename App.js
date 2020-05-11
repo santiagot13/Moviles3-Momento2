@@ -21,7 +21,7 @@ export default class App extends Component {
             name="DateScreen"
             component={DateScreen}
             options={{
-              tabBarLabel: 'Date',
+              tabBarLabel: 'Appointment',
               tabBarColor: Colors.DarkBlue,
               tabBarIcon: () => (
                 <Icon name="calendar-edit" color={Colors.DarkBlue} size={25} />

@@ -1,15 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, View, FlatList, tasks, TouchableHighlight} from 'react-native';
+import {StyleSheet, View, FlatList, Task, TouchableHighlight} from 'react-native';
 import CardComponent from './card';
 import { useIsFocused } from '@react-navigation/native';
 
 export default function ListH(props){
   const isFocused = useIsFocused();
-  const [tasks, setTasks] = useState([]);
+  const [Task, setTask] = useState([]);
 
   const fetchTasks = async () =>{
     //let response = await fetch('http://192.168.1.4/taskapp_api_php/api/listtasks');
-    let response = await fetch(';http://192.168.1.4:3000/api/listtask');
+    let response = await fetch('http://192.168.1.4:3000/api/listtask');
     let jsonResponse = await response.json();
     setTasks(jsonResponse.tasks);
   }
@@ -23,7 +23,7 @@ export default function ListH(props){
         <Text style={styles.buttonTextStyle}>Create Task</Text>
         </TouchableHighlight>
           <FlatList
-            data={tasks}
+            data={Task}
             renderItem={({ item }) => <CardComponent task={item}/>}
             keyExtractor={item => item._id} aca la identificación como esta en la base de datos
             keyExtractor={item => item.name}

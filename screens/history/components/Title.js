@@ -5,7 +5,7 @@ export default class Title extends React.Component {
     render(){
         return (
             <View style={styles.container}>
-                <Text style={styles.title}>History Date</Text>
+                <Text style={styles.title}>History Appointment</Text>
             </View>
         );
   }
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         height: '6%',
         alignItems: 'center',
         justifyContent: 'center',
-       backgroundColor: 'green',
+        //backgroundColor: 'green',
     },
     title:{
         fontFamily: 'Arial',

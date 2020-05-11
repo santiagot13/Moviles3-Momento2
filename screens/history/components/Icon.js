@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     height: '10%',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'yellow',
+    // backgroundColor: 'yellow',
     paddingTop: 20,
   },
   icon:{
